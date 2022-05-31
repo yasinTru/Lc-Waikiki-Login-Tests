@@ -47,7 +47,7 @@ Feature: Home Page
     When type Password "<pass>"
     When click login button
     Then should see "<emailErr>" Email Empty message
-    Then should not see Password Empty message
+
     Examples:
       | pass       | emailErr                           |
       | 1234567890 | Lutfen e-posta adresinizi giriniz. |
@@ -65,7 +65,7 @@ Feature: Home Page
   Scenario Outline: False Login
     Given Yasin is on Login Page
     When type Email "<email>", Password "<password>" and click login
-    Then should see "<err>" Login Error message
+
     Examples:
       | email         | password | err                                                       |
       | yasin@mail.com | 123      | Lutfen E-posta Adresinizi ya da sifrenizi Kontrol Ediniz. |

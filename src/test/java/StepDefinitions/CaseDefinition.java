@@ -112,11 +112,15 @@ public class CaseDefinition {
 
     @When("type Email {string}")
     public void type_email(String string) {
+        loginPage.enterEmail();
 
     }
 
+
+
     @Then("should not see Email Empty message")
     public void should_not_see_email_empty_message() {
+        loginPage.shouldNotSeeEmail();
 
     }
 
@@ -124,34 +128,35 @@ public class CaseDefinition {
 
     @When("type Password {string}")
     public void type_password(String string) {
-
+        loginPage.enterPassword();
     }
 
-    @Then("should not see Password Empty message")
-    public void should_not_see_password_empty_message() {
-
-    }
 
     //Scenario 6, @False @Password
     @When("type Email {string} and click login")
     public void type_email_and_click_login(String string) {
-
+        loginPage.enterEmail();
+        loginPage.clickLogin();
     }
 
     @Then("should see {string} Email False message")
     public void should_see_email_false_message(String string) {
 
+      //  loginPage.emailEmpty();
     }
 
     //Scenario 7, @FalseLogin
 
     @When("type Email {string}, Password {string} and click login")
     public void type_email_password_and_click_login(String string, String string2) {
+        loginPage.enterEmail();
+        loginPage.enterPassword();
 
     }
 
     @Then("should see {string} Login Error message")
     public void should_see_login_error_message(String string) {
+        loginPage.getWrongLoginError();
 
     }
 

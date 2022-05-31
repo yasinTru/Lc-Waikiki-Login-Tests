@@ -4,6 +4,7 @@ import Framework.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.Properties;
@@ -15,6 +16,10 @@ public class DriverFactory {
     static Properties properties;
 
     public static WebDriver initialize_Driver(String browser){
+
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--disable-blink-features=AutomationControlled"); //removes the detection
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); //removes the banner
         properties = ConfigReader.getProperties();
         if (browser.equals("Chrome")) {
             WebDriverManager.chromedriver().setup();

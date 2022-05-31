@@ -3,6 +3,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Framework.ElementHelper;
 
@@ -21,12 +22,15 @@ public class LoginPage{
     By forgotPassword= By.cssSelector(".login-form__remember-me .login-form__forgot-password-link");
     By loginButton= By.cssSelector(".login-form__button.login-form__button--bg-blue");
     By mailError= By.xpath("//div[contains(text(),' e-posta adresinizi giriniz.')]");
+    By loginError= By.cssSelector(".login-form__header-errors .login-form__header-errors--p");
+
 
 
 
     WebDriver driver;
     WebDriverWait wait;
     ElementHelper elementHelper;
+
 
     public LoginPage(WebDriver driver)
     {
@@ -129,6 +133,34 @@ public class LoginPage{
         elementHelper.checkElementVisible(mailError);
     }
 
+
+    //SC 4
+
+    public void enterEmail()
+    {
+        elementHelper.sendKey(emailText, "yasin@mail.com");
+    }
+
+    public void shouldNotSeeEmail() {
+
+        //elementHelper.checkElementVisible(mailError);
+
+    }
+
+    //SC 5
+
+     public void enterPassword()
+     {
+         elementHelper.sendKey(passwordText,"1234567890");
+     }
+
+    //SC 7
+
+    public void getWrongLoginError()
+    {
+        elementHelper.getText(loginError);
+        System.out.println(loginError);;
+    }
 
 
 }
